@@ -1,1 +1,5 @@
-spring.application.name=be-rent-vehicle
+spring:
+  application:
+    name: be-rent-vehicle
+  profiles:
+    active: development
