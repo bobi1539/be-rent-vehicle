@@ -7,6 +7,8 @@ public final class Endpoint {
     private Endpoint() {
         throw new AppException(GlobalMessage.CANNOT_INSTANCE_HELPER_CLASS);
     }
+
     public static final String BASE_ENDPOINT = "/api/rent-vehicle";
     public static final String USER = BASE_ENDPOINT + "/users";
+    public static final String AUTH = BASE_ENDPOINT + "/auth";
 }
