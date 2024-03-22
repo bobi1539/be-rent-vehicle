@@ -42,27 +42,4 @@ public class UserServiceImpl extends BaseService implements UserService, UserDet
         return userRepository.findByEmailAndIsDeleted(email, false)
                 .orElseThrow(() -> new AppException(GlobalMessage.DATA_NOT_FOUND));
     }
-
-    private UserResponseDto mapUserToResponse(MUser user) {
-        UserResponseDto userResponseDto = UserResponseDto.builder()
-                .id(user.getId())
-                .fullName(user.getFullName())
-                .phoneNumber(user.getPhoneNumber())
-                .email(user.getEmail())
-                .isActive(user.isActive())
-                .role(mapRoleToResponse(user.getRole()))
-                .build();
-        mapBaseEntityToResponse(userResponseDto, user);
-        return userResponseDto;
-    }
-
-    private RoleResponseDto mapRoleToResponse(MRole role) {
-        RoleResponseDto roleResponseDto = RoleResponseDto.builder()
-                .id(role.getId())
-                .name(role.getName())
-                .build();
-        mapBaseEntityToResponse(roleResponseDto, role);
-        return roleResponseDto;
-    }
-
 }

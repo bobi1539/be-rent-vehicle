@@ -29,7 +29,7 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final DelegatedAuthenticationEntryPoint authenticationEntryPoint;
     private static final String[] ALLOW = {
-            Endpoint.AUTH + "/login/**",
+            Endpoint.AUTH + "/**",
             "/swagger-ui/**",
             "/swagger-resources/**",
             "/v3/api-docs/**",

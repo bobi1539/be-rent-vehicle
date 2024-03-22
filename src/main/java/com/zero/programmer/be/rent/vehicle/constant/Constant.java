@@ -8,4 +8,5 @@ public final class Constant {
         throw new AppException(GlobalMessage.CANNOT_INSTANCE_HELPER_CLASS);
     }
     public static final String ERROR = "Error : ";
+    public static final String SYSTEM = "SYSTEM";
 }

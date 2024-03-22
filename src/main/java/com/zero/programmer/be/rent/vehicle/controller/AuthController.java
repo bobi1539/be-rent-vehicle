@@ -2,7 +2,9 @@ package com.zero.programmer.be.rent.vehicle.controller;
 
 import com.zero.programmer.be.rent.vehicle.constant.Endpoint;
 import com.zero.programmer.be.rent.vehicle.dto.request.LoginRequestDto;
+import com.zero.programmer.be.rent.vehicle.dto.request.RegisterCustomerRequestDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.LoginResponseDto;
+import com.zero.programmer.be.rent.vehicle.dto.response.UserResponseDto;
 import com.zero.programmer.be.rent.vehicle.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -24,5 +26,12 @@ public class AuthController {
             @RequestBody @Valid LoginRequestDto requestDto
     ) {
         return authService.login(requestDto);
+    }
+
+    @PostMapping("/register")
+    public UserResponseDto registerCustomer(
+            @RequestBody @Valid RegisterCustomerRequestDto requestDto
+    ) {
+        return authService.registerCustomer(requestDto);
     }
 }
