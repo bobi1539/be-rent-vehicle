@@ -47,6 +47,8 @@ public class AuthServiceImpl extends ValidationService implements AuthService {
         String token = jwtService.generateToken(composeTokenComponentDto(user));
         return LoginResponseDto.builder()
                 .token(token)
+                .email(user.getEmail())
+                .fullName(user.getFullName())
                 .build();
     }
 
@@ -73,6 +75,8 @@ public class AuthServiceImpl extends ValidationService implements AuthService {
         String jwtToken = jwtService.generateToken(composeTokenComponentDto(token.getUser()));
         return EmailVerificationResponseDto.builder()
                 .token(jwtToken)
+                .email(token.getUser().getEmail())
+                .fullName(token.getUser().getFullName())
                 .build();
     }
 

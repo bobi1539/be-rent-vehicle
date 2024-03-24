@@ -9,4 +9,6 @@ import lombok.*;
 @Builder
 public class EmailVerificationResponseDto {
     private String token;
+    private String email;
+    private String fullName;
 }
