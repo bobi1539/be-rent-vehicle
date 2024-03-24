@@ -1,7 +1,6 @@
 package com.zero.programmer.be.rent.vehicle.service.impl;
 
 import com.zero.programmer.be.rent.vehicle.dto.JwtTokenComponentDto;
-import com.zero.programmer.be.rent.vehicle.dto.response.UserResponseDto;
 import com.zero.programmer.be.rent.vehicle.service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -26,7 +25,7 @@ public class JwtServiceImpl implements JwtService {
     public String generateToken(JwtTokenComponentDto dto) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", dto.getUserId());
-        claims.put("roleId", dto.getRoleId());
+        claims.put("type", dto.getType());
         claims.put("email", dto.getEmail());
         claims.put("fullName", dto.getFullName());
         return createToken(claims, dto.getEmail());
@@ -41,6 +40,10 @@ public class JwtServiceImpl implements JwtService {
     @Override
     public String extractEmail(String token) {
         return extractClaim(token, Claims::getSubject);
+    }
+
+    private Boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
     }
 
     private Date extractExpiration(String token) {
@@ -59,10 +62,6 @@ public class JwtServiceImpl implements JwtService {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-    }
-
-    private Boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
     }
 
     private String createToken(Map<String, Object> claims, String email) {

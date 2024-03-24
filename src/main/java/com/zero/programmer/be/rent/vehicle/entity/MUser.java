@@ -1,7 +1,11 @@
 package com.zero.programmer.be.rent.vehicle.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,7 +14,7 @@ import java.util.Collections;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Getter
 @Setter
 @Entity
@@ -37,9 +41,8 @@ public class MUser extends BaseEntity implements UserDetails {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private MRole role;
+    @Column(name = "type")
+    private String type;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

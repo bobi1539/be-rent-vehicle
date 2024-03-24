@@ -6,6 +6,4 @@ import org.springframework.security.core.userdetails.UserDetails;
 public interface UserService {
 
     UserResponseDto getUserByEmail(String email);
-
-    UserDetails getUserDetailsByEmail(String email);
 }

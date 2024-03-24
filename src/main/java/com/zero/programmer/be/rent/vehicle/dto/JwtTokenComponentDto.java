@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class JwtTokenComponentDto {
     private Long userId;
-    private Long roleId;
+    private String type;
     private String email;
     private String fullName;
 }

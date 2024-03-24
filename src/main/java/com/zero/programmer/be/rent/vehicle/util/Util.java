@@ -13,7 +13,7 @@ public final class Util {
     }
 
     public static boolean isStringContainNumber(String value) {
-        for(char c : value.toCharArray()) {
+        for (char c : value.toCharArray()) {
             if (Character.isDigit(c)) {
                 return true;
             }
@@ -22,7 +22,7 @@ public final class Util {
     }
 
     public static boolean isStringContainUpperCaseLetter(String value) {
-        for(char c : value.toCharArray()) {
+        for (char c : value.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 return true;
             }
@@ -34,5 +34,18 @@ public final class Util {
         Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
         Matcher matcher = pattern.matcher(value);
         return matcher.find();
+    }
+
+    public static String generateRandomStringAndNumber(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder randomString = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = (int) (Math.random() * characters.length());
+            char randomChar = characters.charAt(randomIndex);
+            randomString.append(randomChar);
+        }
+
+        return randomString.toString();
     }
 }

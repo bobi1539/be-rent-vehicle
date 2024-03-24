@@ -7,7 +7,6 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class RoleResponseDto extends BaseEntityResponseDto {
-    private Long id;
-    private String name;
+public class EmailVerificationResponseDto {
+    private String token;
 }

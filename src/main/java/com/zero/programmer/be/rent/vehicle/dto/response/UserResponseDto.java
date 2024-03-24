@@ -13,5 +13,5 @@ public class UserResponseDto extends BaseEntityResponseDto {
     private String phoneNumber;
     private String email;
     private boolean isActive;
-    private RoleResponseDto role;
+    private String type;
 }

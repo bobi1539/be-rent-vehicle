@@ -1,9 +1,7 @@
 package com.zero.programmer.be.rent.vehicle.service.impl;
 
 import com.zero.programmer.be.rent.vehicle.constant.GlobalMessage;
-import com.zero.programmer.be.rent.vehicle.dto.response.RoleResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.UserResponseDto;
-import com.zero.programmer.be.rent.vehicle.entity.MRole;
 import com.zero.programmer.be.rent.vehicle.entity.MUser;
 import com.zero.programmer.be.rent.vehicle.exception.AppException;
 import com.zero.programmer.be.rent.vehicle.repository.UserRepository;
@@ -26,11 +24,6 @@ public class UserServiceImpl extends BaseService implements UserService, UserDet
     public UserResponseDto getUserByEmail(String email) {
         MUser user = findUserByEmail(email);
         return mapUserToResponse(user);
-    }
-
-    @Override
-    public UserDetails getUserDetailsByEmail(String email) {
-        return findUserByEmail(email);
     }
 
     @Override
