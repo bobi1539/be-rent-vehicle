@@ -26,4 +26,4 @@ spring:
           starttls:
             enable: true
 api:
-  key: ${API_KEY}
+  key: RGNYpOvJK5VfvRKzPNVQQ7Xh2ZXMBKdol8q1qtBpUdgUhG3P2d
