@@ -4,9 +4,11 @@ import com.zero.programmer.be.rent.vehicle.constant.Constant;
 import com.zero.programmer.be.rent.vehicle.constant.GlobalMessage;
 import com.zero.programmer.be.rent.vehicle.constant.UserType;
 import com.zero.programmer.be.rent.vehicle.dto.JwtTokenComponentDto;
+import com.zero.programmer.be.rent.vehicle.dto.request.EmailIsRegisterRequestDto;
 import com.zero.programmer.be.rent.vehicle.dto.request.LoginRequestDto;
 import com.zero.programmer.be.rent.vehicle.dto.request.RegisterCustomerRequestDto;
 import com.zero.programmer.be.rent.vehicle.dto.request.SendEmailDto;
+import com.zero.programmer.be.rent.vehicle.dto.response.EmailIsRegisterResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.EmailVerificationResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.LoginResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.UserResponseDto;
@@ -91,6 +93,16 @@ public class AuthServiceImpl extends ValidationService implements AuthService {
                 .token(jwtToken)
                 .email(user.getEmail())
                 .fullName(user.getFullName())
+                .build();
+    }
+
+    @Override
+    public EmailIsRegisterResponseDto checkEmailIsRegistered(EmailIsRegisterRequestDto requestDto) {
+        validateApiKey(requestDto.getApiKey());
+        Optional<MUser> optionalUser = userRepository.findByEmailAndIsDeleted(requestDto.getEmail(), false);
+        boolean isRegistered = optionalUser.isPresent();
+        return EmailIsRegisterResponseDto.builder()
+                .isRegistered(isRegistered)
                 .build();
     }
 

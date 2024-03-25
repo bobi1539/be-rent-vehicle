@@ -25,3 +25,5 @@ spring:
           auth: true
           starttls:
             enable: true
+api:
+  key: ${API_KEY}

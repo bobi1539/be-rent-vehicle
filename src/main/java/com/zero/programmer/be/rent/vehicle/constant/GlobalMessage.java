@@ -15,6 +15,7 @@ public enum GlobalMessage {
     PASSWORD_NOT_EQUAL(HttpStatus.BAD_REQUEST, "Password Not Same | Password Tidak Sama"),
     TOKEN_NOT_VALID(HttpStatus.BAD_REQUEST, "Token Not Valid | Token Not Valid"),
     TOKEN_IS_EXPIRED(HttpStatus.BAD_REQUEST, "Token Is Expired | Token Sudah Expired"),
+    API_KEY_NOT_VALID(HttpStatus.BAD_REQUEST, "Api Key Not Valid | Api Key Not Valid"),
     CANNOT_INSTANCE_HELPER_CLASS(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error | Internal Server Error"),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error | Internal Server Error");
     public final HttpStatus httpStatus;

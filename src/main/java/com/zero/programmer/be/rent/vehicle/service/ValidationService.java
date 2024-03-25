@@ -3,8 +3,13 @@ package com.zero.programmer.be.rent.vehicle.service;
 import com.zero.programmer.be.rent.vehicle.constant.GlobalMessage;
 import com.zero.programmer.be.rent.vehicle.exception.AppException;
 import com.zero.programmer.be.rent.vehicle.util.Util;
+import org.springframework.beans.factory.annotation.Value;
 
 public abstract class ValidationService extends BaseService {
+
+    @Value("${api.key}")
+    protected String apiKey;
+
     protected void validatePassword(String password, String repeatPassword) {
         validatePasswordContainNumber(password);
         validatePasswordContainUpperCaseLetter(password);
@@ -36,6 +41,12 @@ public abstract class ValidationService extends BaseService {
     private void validateRepeatPassword(String password, String repeatPassword) {
         if (!password.equals(repeatPassword)) {
             throw new AppException(GlobalMessage.PASSWORD_NOT_EQUAL);
+        }
+    }
+
+    protected void validateApiKey(String apiKey) {
+        if (!this.apiKey.equals(apiKey)) {
+            throw new AppException(GlobalMessage.API_KEY_NOT_VALID);
         }
     }
 }

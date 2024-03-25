@@ -1,8 +1,10 @@
 package com.zero.programmer.be.rent.vehicle.controller;
 
 import com.zero.programmer.be.rent.vehicle.constant.Endpoint;
+import com.zero.programmer.be.rent.vehicle.dto.request.EmailIsRegisterRequestDto;
 import com.zero.programmer.be.rent.vehicle.dto.request.LoginRequestDto;
 import com.zero.programmer.be.rent.vehicle.dto.request.RegisterCustomerRequestDto;
+import com.zero.programmer.be.rent.vehicle.dto.response.EmailIsRegisterResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.EmailVerificationResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.LoginResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.UserResponseDto;
@@ -45,5 +47,12 @@ public class AuthController {
             @RequestBody @Valid RegisterCustomerRequestDto requestDto
     ) {
         return authService.registerCustomerWithGoogle(requestDto);
+    }
+
+    @PostMapping("/register/email")
+    public EmailIsRegisterResponseDto checkEmailIsRegistered(
+            @RequestBody @Valid EmailIsRegisterRequestDto requestDto
+    ) {
+        return authService.checkEmailIsRegistered(requestDto);
     }
 }
