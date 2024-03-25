@@ -39,4 +39,11 @@ public class AuthController {
     ) {
         return authService.emailVerification(token);
     }
+
+    @PostMapping("/register/google")
+    public LoginResponseDto registerCustomerWithGoogle(
+            @RequestBody @Valid RegisterCustomerRequestDto requestDto
+    ) {
+        return authService.registerCustomerWithGoogle(requestDto);
+    }
 }

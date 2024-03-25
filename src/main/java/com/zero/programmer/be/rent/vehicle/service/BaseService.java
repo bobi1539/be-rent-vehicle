@@ -1,6 +1,5 @@
 package com.zero.programmer.be.rent.vehicle.service;
 
-import com.zero.programmer.be.rent.vehicle.constant.Constant;
 import com.zero.programmer.be.rent.vehicle.dto.response.BaseEntityResponseDto;
 import com.zero.programmer.be.rent.vehicle.dto.response.UserResponseDto;
 import com.zero.programmer.be.rent.vehicle.entity.BaseEntity;
@@ -30,12 +29,5 @@ public abstract class BaseService {
                 .build();
         mapBaseEntityToResponse(userResponseDto, user);
         return userResponseDto;
-    }
-
-    protected void setCreatedAndUpdatedBySystem(BaseEntity baseEntity) {
-        baseEntity.setCreatedBy(1L);
-        baseEntity.setCreatedByName(Constant.SYSTEM);
-        baseEntity.setUpdatedBy(1L);
-        baseEntity.setUpdatedByName(Constant.SYSTEM);
     }
 }

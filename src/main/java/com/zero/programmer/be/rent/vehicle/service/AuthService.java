@@ -10,4 +10,5 @@ public interface AuthService {
     LoginResponseDto login(LoginRequestDto requestDto);
     UserResponseDto registerCustomer(RegisterCustomerRequestDto requestDto);
     EmailVerificationResponseDto emailVerification(String tokenVerification);
+    LoginResponseDto registerCustomerWithGoogle(RegisterCustomerRequestDto requestDto);
 }

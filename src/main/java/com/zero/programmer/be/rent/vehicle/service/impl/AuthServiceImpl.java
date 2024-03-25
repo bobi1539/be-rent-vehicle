@@ -80,6 +80,20 @@ public class AuthServiceImpl extends ValidationService implements AuthService {
                 .build();
     }
 
+    @Override
+    public LoginResponseDto registerCustomerWithGoogle(RegisterCustomerRequestDto requestDto) {
+        validateDuplicateEmail(requestDto.getEmail());
+        validatePassword(requestDto.getPassword(), requestDto.getRepeatPassword());
+
+        MUser user = saveUser(requestDto);
+        String jwtToken = jwtService.generateToken(composeTokenComponentDto(user));
+        return LoginResponseDto.builder()
+                .token(jwtToken)
+                .email(user.getEmail())
+                .fullName(user.getFullName())
+                .build();
+    }
+
     private MUser getUserByEmail(String email) {
         return userRepository.findByEmailAndIsDeleted(email, false)
                 .orElseThrow(() -> new AppException(GlobalMessage.WRONG_EMAIL_OR_PASSWORD));
@@ -115,15 +129,15 @@ public class AuthServiceImpl extends ValidationService implements AuthService {
     }
 
     private MUser composeUser(RegisterCustomerRequestDto requestDto) {
-        MUser user = MUser.builder()
+        return MUser.builder()
                 .fullName(requestDto.getFullName())
                 .email(requestDto.getEmail())
                 .password(hashPassword(requestDto.getPassword()))
-                .isActive(false)
+                .isActive(requestDto.getIsActive())
                 .type(UserType.CUSTOMER.value)
+                .createdByName(requestDto.getFullName())
+                .updatedByName(requestDto.getFullName())
                 .build();
-        setCreatedAndUpdatedBySystem(user);
-        return user;
     }
 
     private String hashPassword(String password) {

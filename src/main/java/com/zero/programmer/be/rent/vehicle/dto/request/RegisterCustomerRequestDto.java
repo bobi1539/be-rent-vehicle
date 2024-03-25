@@ -30,4 +30,7 @@ public class RegisterCustomerRequestDto {
     @NotNull(message = ValidationMessage.REPEAT_PASSWORD_REQUIRED)
     @NotBlank(message = ValidationMessage.REPEAT_PASSWORD_REQUIRED)
     private String repeatPassword;
+
+    @NotNull(message = ValidationMessage.IS_ACTIVE_REQUIRED)
+    private Boolean isActive;
 }
